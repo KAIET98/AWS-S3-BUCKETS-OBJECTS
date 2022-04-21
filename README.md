@@ -2,7 +2,7 @@
 El objetivo de este repositorio es construir un Bucket con sus respectivos objetos
 
 
-# S3
+# S3 (SIN VERSIONADO)
 
 Nos posicionamos dentro de S3 y le damos a "Create bucket". 
 
@@ -23,11 +23,11 @@ eu-west-1
 Dejamos todas las demás configuraciones como tal. 
 
 
-# Subida de archivos
+## Subida de archivos
 
 Nos posicionamos en el bucket que acabamos de crear y le damos a 'Upload' y subimos un archivo cualqiera, puede ser desde un .txt a un .jpg. 
 
-# Investigación de archivo: 
+## Investigación de archivo: 
 
 Una vez subido el archivo clickamos en el hiperlink del archivo mismo para que nos mande al archivo. 
 
@@ -39,7 +39,7 @@ Por otro lado, podemos utilizar el 'Object Url', lo podemos copiar y pegarlo en 
 Lo que pasa es que cuando hacemos el 'Open', estamos dando a AWS las crednciales temproales para que construya una URL por la que pme peuda acceder a la foto. 
 
 
-# Creación de carpetas. 
+## Creación de carpetas. 
 
 Vamso a nuestro bucket recien creado y crearemos una carpeta: 
 ```
@@ -48,9 +48,33 @@ images
 En  la misma carpeta creada también podemos subir archivos. Para ver los archios dentro de la carpeta tambien deberiamos de clickar en el hiperlink de la carpeta. 
 La forma de abirr los archivos que están dentro de la carpeta es la misma qu econ los archivos normales. 
 
-# Borrado de archivos/carpetas
+## Borrado de archivos/carpetas
 
 Si borramos la carpeta teniendo unos archivos dentro nos posicionamos en la situación en la que vamos a borrar todos lso archivos que están dentro de la carpeta. 
+
+
+# S3 (CON VERSIONADO)
+
+Lo que haremos ahora va a ser activar el versionado del bucket que hemos creado.
+
+1. Vamos al bucket
+2. Properties
+3. Bucket versioning > "Enable"
+
+Nuestor bucket está listo para el versionado.
+
+Vamos a nuestro Bucket y ahora veremos que tenemos una nueva característica que se llama "List Versions". Si activamos tendremos una nueva columna que se llama Version ID. El archivo viejo tendrá la caracter´sitica de "null".
+
+Si subimos un nuevo fichero por ejempl, tendremos como dos caracterisitcas, un archivo previo al versionado con su respectiva version (null) y luego el archivo que acabamos d esubir con su version ( una string muy larga). Sin mebargo, si repetimos la subida del mismo segundo archivo otra vez y clicka mos en versiones, veremos que cuelga como una rama del primer archivo con una string muy larga. 
+
+## Borrado de archivos versionados
+
+Si borramos un archivo que tiene versionado, en si en si no nos borra el archivo, sino que nos marca un "Delete marker", con su id de versión. Es como que AWS le marca que estña como "borrado", pero sin estarlo. Para borrar de verdad, tenemos que seleccionarlo y borrarlo otra vez, es decir una estrategia de "permanently delete". Ahí sí que se borra.
+
+
+## Quitado del versionado 
+
+Si nos arrepentimos y queremos quitar el versionado. Los archivos viejos seguiran manteniendo sus versiones y tal pero en cuanto a los nuevos se hara un "overwrite". 
 
 
 :)
