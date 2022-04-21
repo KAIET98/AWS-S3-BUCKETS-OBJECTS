@@ -77,4 +77,40 @@ Si borramos un archivo que tiene versionado, en si en si no nos borra el archivo
 Si nos arrepentimos y queremos quitar el versionado. Los archivos viejos seguiran manteniendo sus versiones y tal pero en cuanto a los nuevos se hara un "overwrite". 
 
 
+
+# Encryption
+
+## Subiendo un archivo. 
+
+Nos posicionamos en el bucket inicial y le damos a subir archivos. 
+
+Al subir un nuevo archivo, antes de darle a "upload", vamos a ir a additional upload options, o algún lugar donde aparezca el encryption . 
+
+Hay un apartado qued cie "Server-side encryption settings", por defecto aparecer aqu eno hay selecionado ningun encryption key, po rlo que le damos a "Specify an encryption key" y ya nos aparecen las opciones teóricas. Seleecionamos el 
+
+```
+Amazon S3-managed keys (SSE-S3)
+```
+
+
+Vamos a acceder al primer archivo que hemos subido, por ejemplo en mi caso va a ser coffee.jpg, ya sabemos que tenemos un hiperlink para acceder a ello. Entonces, como hagamos un "scroll- down", vamos a lelgar al encryption-side lo cual va a estar "disabled".
+
+Por otro lado, vamos a asubir un segundo archivo pero en este caso, e nvez de seleccionar el 'Amazon S3-managed keys (SSE-S3)', seleccionaremos el: 
+
+```
+AWS Key Management Service key (SSE-KMS)
+```
+
+y seguidamente la opción de: 
+
+```
+AWS managed key (aws/s3)
+```
+Entonces, en este segundo archivo la encriptación sucedera cuando se le lalme por medio de la API. 
+
+## El bucket entero
+
+En vez de tener diferents tipos de ecnryptación para cada archivo lo que podemos hacer es desplegar uno entero para todo el bucket. Iriamos al "Properties" 
+y en "Default encryption" elegiriamos el que quisieramos. 
+
 :)
